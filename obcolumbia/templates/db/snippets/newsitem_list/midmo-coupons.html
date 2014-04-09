@@ -1,0 +1,16 @@
+{% load humanize %}
+{% for newsitem in newsitem_list %}
+	<li id="newsitem-{{ newsitem.id }}" class="newsitem news-articles">
+		<span class="newsitem hidden" style="float: right;">
+		  <form><input type="checkbox" class="select-newsitem" id="newsitem-{{newsitem.id}}"></form>
+		</span>
+		<span class="business-name">{{ newsitem.attributes.business_name.name }}</span>
+		<span class="location">{{ newsitem.location_name }}</span>
+		<strong class="title"><a href="{{ newsitem.item_url }}" class="url">{{ newsitem.title }}</a></strong>
+		<blockquote class="excerpt"><p>{{ newsitem.attributes.excerpt }}</p></blockquote>
+		{% if newsitem.attributes.starts %}<span class="dates">{%if newsitem.attributes.starts <= today %}Started {% else %}Starts {% endif %}{{ newsitem.attributes.starts|naturalday:"m/d/Y" }}</span> &mdash;{% endif %}
+		{% if newsitem.attributes.expires %}<span class="dates">{%if newsitem.attributes.expires < today %}Ended {% else %}Ends {% endif %}{{ newsitem.attributes.expires|naturalday:"m/d/Y" }}</span>{% else %} No expiration {% endif %}
+
+		<p class="info">Published on <strong class="dateposted">{{ newsitem.item_date|date:"F j, Y" }}</strong>.</p>
+	</li>
+{% endfor %}

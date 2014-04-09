@@ -1,0 +1,66 @@
+# Sample crontab config file for obcolumbia scrapers.
+
+SHELL=/bin/bash
+
+# Edit these as necessary
+DJANGO_SETTINGS_MODULE=obcolumbia.settings
+BINDIR=/var/www/columbia.openblock.org/current/bin
+PYTHON=/var/www/columbia.openblock.org/current/bin/python
+SCRAPERS=/var/www/columbia.openblock.org/current/src/openblock/ebdata/ebdata/scrapers
+COLUMBIA_SCRAPERS=/var/www/columbia.openblock.org/current/src/obcolumbia/obcolumbia/scrapers
+HTTP_CACHE=/tmp/obcolumbia_scraper_cache
+# Where do errors get emailed?
+MAILTO=pw@openplans.org
+
+# Make sure this directory exists
+LOGDIR=/var/log/openblock/
+
+# Format:
+# m  h dom mon dow user   command
+
+######################################################################
+# Email alerts.
+@daily openblock $BINDIR/send_alerts  --frequency daily -v
+@weekly openblock $BINDIR/send_alerts --frequency weekly -v
+
+######################################################################
+# Aggregates. Update every few minutes.
+*/7 * * * * openblock $BINDIR/update_aggregates -q
+
+######################################################################
+# Background tasks.
+# We re-start the task runner every 10 minutes just in case anything
+# goes wrong.  It's fine if one run overlaps with the next.  Note to
+# avoid tons of stdout blather we need a special settings module that
+# turns off the default logging config.
+*/10 * * * * openblock /usr/bin/env DJANGO_SETTINGS_MODULE=obcolumbia.settings_background $BINDIR/django-admin.py process_tasks --duration=600 --log-std --log-level=INFO --traceback --log-file=$LOGDIR/background-tasks.log
+
+######################################################################
+# Examples of scraper configuration.
+# Set API keys in your $DJANGO_SETTINGS_MODULE.
+# See "Running Scrapers" in the OpenBlock docs.
+
+# How to load an RSS feed into a schema with no extra attributes.
+#29 * * * * openblock $PYTHON $SCRAPERS/general/georss/retrieval.py -q --schema=local-news  "http://www.columbiatribune.com/crime-rss/"
+
+2,22,42 * * * * openblock $PYTHON $COLUMBIA_SCRAPERS/police.py -q
+
+5,25,45 * * * * openblock $PYTHON $COLUMBIA_SCRAPERS/sheriff.py -q
+
+10,30,50 * * * * openblock $PYTHON $COLUMBIA_SCRAPERS/fire.py -q
+
+# Rarely updated.
+0 9 * * * openblock $PYTHON $COLUMBIA_SCRAPERS/midmo_coupons.py -q
+0 13 * * * openblock $PYTHON $COLUMBIA_SCRAPERS/midmo_reviews.py -q -d 10
+
+# Pretty slow due to hitting rate limits. Several times a day should be OK.
+0 3,11,19 * * * openblock $PYTHON $SCRAPERS/general/meetup/meetup_retrieval.py -q
+
+23 * * * * openblock $PYTHON $SCRAPERS/general/flickr/flickr_retrieval.py -q
+
+
+# Updates once an hour.
+13 * * * * openblock $PYTHON $COLUMBIA_SCRAPERS/mupolice.py -q -d 1
+
+# Updates once an hour.
+43 * * * * openblock $PYTHON $COLUMBIA_SCRAPERS/trulia_scraper.py -q

@@ -1,0 +1,75 @@
+{% extends "base.html" %}{% comment %}<!-- -*- mode: django-html; tab-width: 4 -*- -->{% endcomment %}
+
+{% load eb mapping %}
+
+{% comment %}
+Base template for all "place" pages -- either block or location.
+Implements only the "top" of the page -- the title and "Nearby" list.
+
+Required variables: nearby_locations, place, is_block
+{% endcomment %}
+
+<!-- begin block content -->
+{% block content %}
+<div id="nav-location">
+	<!-- begin block map -->
+	{% block map %}
+	<div id="mapwrapper">
+		<script type="text/javascript">
+		{% autoescape off %}
+		  function loadMap() {
+		    var config = {{map_configuration}};
+    		config.bounds = [{{bbox.0}}, {{bbox.1}}, {{bbox.2}}, {{bbox.3}}];
+    		return new OBMap(config);
+		  }
+	 	{% endautoescape %}
+		</script>
+		{% include "richmaps/richmap.html" %}
+		{% include "includes/share_links.html"%}
+	</div><!--/ #mapwrapper -->
+	{% endblock map %}
+	<!-- end block map -->
+	<div class="clear"></div>
+	
+	<div class="sidebar">
+	<span id="gradient"></span>
+		<!-- block subscribe_links -->
+		{% block subscribe_links %}
+		{%if place%}
+			<div class="subscribe-links">
+				<h3>Stay up to date</h3>
+					<ul class="updates">
+					   {% if alerts_installed %}<li><a href="{{ place.alert_url }}" class="email"><span>E-mail alerts</span></a></li>{% endif %}
+					   <li><a href="{{ place.url }}feeds/" class="rss"><span>Custom RSS feeds</span></a></li>
+					  <div class="clear"></div>
+					</ul>
+			</div>
+		{%endif%}
+		{% endblock subscribe_links %}
+		<!-- end block subscribe_links -->
+
+		<!-- block nearby_locations -->
+		{% block nearby_locations %}
+		{% if nearby_locations %}
+		<div id="nearby">
+		<h3>Nearby locations</h3>
+			<ul>
+				{% for location in nearby_locations %}
+				<li><a id="location-{{ location.id }}" href="{{ location.url }}">{{ location.name }}</a></li>
+				{% endfor %}
+			</ul>
+		</div><!-- end #nearby -->
+		{% endif %}
+		{% endblock nearby_locations %}
+		<!-- endblock nearby_locations -->
+		
+		{%block sidebar_extend%}
+		{%endblock%}
+		<div class="clear"></div>
+	</div>
+	
+</div><!--/ #nav-location -->
+<!-- begin block place_content -->
+{% block place_content %}{% endblock %}
+<!-- end block place_content -->
+{% endblock content %}

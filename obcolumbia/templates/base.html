@@ -1,0 +1,189 @@
+{% comment %}<!-- -*- mode: django-html; tab-width: 4 -*- -->{% endcomment %}
+{% load eb %}{% load django_static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<title>{% block fulltitle %}{% block title %}{% endblock %} | {% block city_title %}OpenBlock{% endblock %}{% endblock fulltitle %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="robots" content="noarchive">
+<link rel="home" title="Home" href="{% url ebpub-homepage %}">
+
+{% slimall %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/style-reset.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}scripts/chosen.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/openblock.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}resources/styles/obcolumbia.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/calendrical.css" />
+{% endslimall %}
+
+<script src="{{ JQUERY_URL }}" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL}}styles/smoothness/jquery-ui-1.8.17.custom.css" />
+
+<script type="text/javascript">
+// Not using jquery.noConflict() because ironically it causes a conflict
+// with OpenLayers and we end up with the $ function from OpenLayers. 
+// But a lot of existing everyblock code expects $j instead of $
+var $j = $;
+</script>
+{% slimall %}
+<script src="{{ STATIC_URL }}scripts/ob-jquery-csrf.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}scripts/chosen.jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL}}scripts/jquery.calendrical.js"></script>
+<script src="{{ STATIC_URL}}scripts/json2.js"></script>
+{% endslimall %}
+
+
+<script src="{{ STATIC_URL }}scripts/jquery-ui-1.8.17.custom.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL}}resources/scripts/obcolumbia.js"></script>
+<!-- begin block extrahead -->
+{% block extrahead %}{% endblock %}
+<!-- end block extrahead -->
+</head>
+<body {%block bodyID %}{% if bodyid %}id="{{bodyid}}"{% endif %}{%endblock%} {% if bodyclass %}class="{{bodyclass}}"{% endif %}>
+ {% block body_wrapper %}
+ <div id="container">
+	<div id="header">
+		<h1><a href="{% url ebpub-homepage %}">OpenBlock: {% METRO_NAME %}</a></h1>
+		<div id="globalnav">
+			{% block userlinks %}
+			{% include "db/snippets/userlinks.html" %}
+			{% endblock userlinks %}
+		</div><!--/ #globalnav -->
+		<!-- begin block breadcrumbs -->
+		{% block breadcrumbs %}
+		{% include "db/snippets/breadcrumbs.html" %}
+		{% endblock breadcrumbs %}
+		<!-- end block breadcrumbs -->
+	
+	
+	<!--Where/What navigation -->
+	<div class="clear"></div>
+
+<div id="ob_menu">
+	<h4>Search</h4>
+<div class="clear"></div>
+	
+	<!-- Where Navigation -->
+	<div id="where" class="main_item">
+			<p>Where</p>
+			<a href="#" id="where_btn" class="main_btn mb-hide">
+		{% block page_title %}
+			{% if place %}
+				<span class="columbia">{{ place.pretty_name }}</span>
+			{%else%}
+				<span class="columbia">All {% METRO_NAME %}</span>
+			{%endif%}
+		{% endblock page_title %}
+			</a>
+		
+		
+		<!-- Where Dropdown -->
+		<div id="where_dropdown" class="menu_dropdown">  
+			<h3><em>Where</em></h3>
+			<a class="close" href="#">cancel</a>
+			<div class="dropdown_list">
+				<!-- location search form-->
+				{% set_search_placeholder "Search for" as placeholder %}
+				<form action="{% url ebpub-search %}" id="globalsearch" onsubmit="if ($j('#searchinput').val() == '{{ placeholder }}') return false; return true;">
+				<p>
+					<label for="searchinput">{{ placeholder}}</label>
+					<input type="text" id="searchinput" name="q" value="{{ placeholder }}" onfocus="if (this.value == '{{ placeholder }}') { this.value = ''; }" onblur="if (this.value == '') { this.value = '{{ placeholder }}'; }">
+					<button type="submit">Go</button>
+				</p>
+				</form>
+				
+				{% include "db/snippets/location_links.html" %}
+			</div>
+		</div>
+	</div> 
+
+	<!-- What Navigation -->
+	<div id="what" class="main_item">
+    	<p>What</p>
+		<a href="#" id="what_btn" class="main_btn">
+        	{% block what_label %}
+            	<span class="latest">Latest</span>
+            {% endblock what_label %}
+        </a>
+        
+        
+        <div id="what_dropdown" class="menu_dropdown">  
+			<h3><em>What</em></h3>
+			<a class="close" href="#">cancel</a>
+			<div class="dropdown_list">
+			{% block what_list %}
+				{% include "db/snippets/type_links.html" %}
+			{% endblock %}
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	{%block filter_advanced %}
+	
+	{%endblock%}
+</div>
+	<!--end Where/What navigation-->
+	
+	
+	<div class="post_dropdown mb-hide">	
+		<a id="post" href="" ><span>Post</span></a>
+			 <div id="post_dropdown" class="menu_dropdown">  
+				 <h3>Post</h3>
+				<a class="close" href="">cancel</a>
+				<ul class="">
+					<li><a class="neighbor-messages typelink" href="/neighbornews/message/new">Neighbor Messages</a></li>
+					<li><a class="neighbor-events typelink" href="/neighbornews/event/new">Neighbor Events</a></li>
+			   </ul>
+			 </div>
+		 <div class="clear"></div>
+	</div>
+	
+	{% block view_toggle%}
+		<ul class="view_controls mb-hide" id="top">
+        	<li class="active list"><a>List View</a></li>
+			{% if place and schema %}
+				<li class="map"><a href="/maps/{{ schema.slug }}/filter/?bounds={{bbox.0}}, {{bbox.1}}, {{bbox.2}}, {{bbox.3}}&loc_url=/api/dev1/locations/{{place.location_type.slug}}/{{place.slug}}.json&loc_title={{ place.pretty_name }}">Map View</a></li>
+				{%else%}
+					{% if schema %}
+					<li class="map"><a href="/maps/{{ schema.slug }}/filter/">Map View</a></li>
+					{% else %}
+						{% if place %}
+							{% if place.location_type.slug == "streets"%}
+								<li class="map"><a href="/maps/">Map View</a></li>
+								{% else %}
+								<li class="map"><a href="/maps/?bounds={{bbox.0}}, {{bbox.1}}, {{bbox.2}}, {{bbox.3}}&loc_url=/api/dev1/locations/{{place.location_type.slug}}/{{place.slug}}.json&loc_title={{ place.pretty_name }}">Map View</a></li>
+							{%endif%}
+						{%else%}
+							<li class="map"><a href="/maps/">Map View</a></li>
+						{%endif%}
+					{%endif%}
+			{%endif%}
+        </ul>
+	{%endblock%}
+	
+		
+	
+	
+	</div><!-- / #header -->
+	
+	<div id="main">
+	  <!-- begin block messages -->
+		{% block messages %}
+	    {% if messages %}
+	    <ul class="messages">
+		  {% for message in messages %}
+		  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		  {% endfor %}
+		</ul>
+		{% endif %}
+		{% endblock messages %}
+        <!-- end block messages -->
+		<!-- begin block content -->
+		{% block content %}{% endblock content %}
+		<!-- end block content -->
+	<div class="clear"></div>
+	</div><!-- / #main -->
+  </div><!-- / #container -->
+  {% endblock body_wrapper %}
+</body>
+</html>

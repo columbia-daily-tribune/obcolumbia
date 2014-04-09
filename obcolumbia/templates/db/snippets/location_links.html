@@ -1,0 +1,17 @@
+{% load eb eb_filter mapping django_static dateutils %}
+{% regroup allowed_locations by location_type as location_regroup %}
+
+
+<h5 class="columbia"><a href="{% if filters and schema %}{% filter_url filters -"location"%}{%else%}/{%endif%}">All {% METRO_NAME %}</a></h5>
+
+{% for type in location_regroup %}
+	<h5 id="{{ type.grouper.slug }}"><span>{{ type.grouper.plural_name|capfirst }}</span></h5>
+	<ul id="{{ type.grouper.slug }}">
+	{% for location in type.list %}
+			<li id="{{ location.slug}}">
+	<a href="{% if filters and schema %}{% filter_url filters +'location_name' location%}{%else%}{{ location.url }}{%endif%}">{{ location.name }}</a>
+			</li>
+	{%endfor%}
+	<div class="clear"></div>
+	</ul>
+{%endfor%}

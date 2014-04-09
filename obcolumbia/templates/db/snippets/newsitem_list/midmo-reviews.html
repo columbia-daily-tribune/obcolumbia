@@ -1,0 +1,13 @@
+{% load humanize %}
+{% for newsitem in newsitem_list %}
+	<li id="newsitem-{{ newsitem.id }}" class="newsitem news-articles">
+		<span class="newsitem hidden" style="float: right;">
+		  <form><input type="checkbox" class="select-newsitem" id="newsitem-{{newsitem.id}}"></form>
+		</span>
+		<span class="location">{{ newsitem.location_name }}</span>
+		<strong class="title"><a href="{{ newsitem.item_url }}" class="url">{{ newsitem.title }}</a></strong>
+		<span class="rating rating_{{newsitem.attributes.rating.name}}">
+		Rated {{ newsitem.attributes.rating.code }} / 5</span>
+		by <span class="reviewer">{{newsitem.attributes.reviewer }}</strong>
+	</li>
+{% endfor %}

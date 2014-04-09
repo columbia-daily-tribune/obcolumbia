@@ -1,0 +1,10 @@
+<h3 class="sharelinks">Share this page: 
+		
+		<a href="" id="sharelink">Link</a>
+		<div id="theLink">{{ request.META.HTTP_HOST}}{{ request.META.REQUEST_URI}}</div>
+		<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://{{ request.META.HTTP_HOST}}{{ request.META.REQUEST_URI}}" id="facebook_button">
+			Share on Facebook
+		</a>
+		<a  href="http://twitter.com/share?text=Explore your neighborhood on Open Block&url=http://{{ request.META.HTTP_HOST}}{{ request.META.REQUEST_URI}}" class="twitter popup" id="twitter_button">Tweet</a>
+		
+</h3>

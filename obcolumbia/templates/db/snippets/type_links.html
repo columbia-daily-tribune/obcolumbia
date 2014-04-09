@@ -1,0 +1,12 @@
+{% load eb eb_filter mapping django_static dateutils%}
+
+<h5 class="latest"><a href="{%if place %}{% if place.location_type %}/locations/{{place.location_type.slug}}/{{place.slug}}
+{% else %}{% if place %}    	/streets/{{place.street_slug}}/{{place.from_num}}-{{place.to_num}}{%if place.predir%}-{{place.predir|lower}}{%endif%}{%if place.postdir%}-{{place.postdir|lower}}{%endif%}/{% else %}{% endif %}{% endif %}{%else%}/{%endif%}">Latest</a></h5>
+<h5><span>Content Types</span></h5>
+<ul>
+{% for obj in allowed_schemas %}
+	<li>
+	<a href="{% if filters and place %}{% filter_url filters +'schema' obj %}{%else%}/{{obj.slug}}{%endif%}" class="{{ obj.slug }}">{% filter capfirst %}{{ obj.plural_name }}{% endfilter %}</a>
+	</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,31 @@
+{% extends "db/newsitem_detail.html" %}
+{% load humanize %}
+
+{% block newsitem_detail_attribute_list %}
+<tr>
+  <th>Photo</th>
+  <td><img src="{{ newsitem.attributes.thumbnail }}" ></td>
+</tr>
+{% for attribute in attribute_list %}
+  <tr>
+    <th>
+      {{ attribute.sf.smart_pretty_name|capfirst }}
+    </th>
+    <td>
+      {% if attribute.value_list %}
+      {% for value in attribute.value_list %}
+        {% if value.url %}
+          <a href="{{ value.url }}">{{ value.value }}</a>
+        {% else %}
+          {% if "price" in attribute.sf.name.lower %}${% endif %}{{ value.value|intcomma|default:value.value }}
+        {% endif %}
+        {% if value.description %}<p>{{ value.description|safe }}</p>{% endif %}
+        {% if not forloop.last %}{% if not value.description %}<br>{% endif %}{% endif %}
+      {% endfor %}
+      {% else %}
+      None
+      {% endif %}
+    </td>
+  </tr>
+{% endfor %}
+{% endblock newsitem_detail_attribute_list %}

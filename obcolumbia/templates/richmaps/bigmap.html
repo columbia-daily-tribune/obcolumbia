@@ -1,0 +1,120 @@
+{% extends "base.html" %}{% comment %} -*- mode: django-html; tab-width: 4 -*- {% endcomment %}
+{% load django_static eb humanize mapping %}
+
+{% block fulltitle %}Map of {% METRO_NAME %}{% endblock %}
+{%block bodyID %}id="bigmap"{%endblock%}
+{% block body_wrapper %}
+
+	<a href="" id="list_button" title="View List"><span>Show/Hide list</span></a>
+	<div id="headline_wrapper">
+		<h3>Item List</h3>
+		<div id="map_headlines" class="map-headlines">
+		</div>
+	</div>
+
+
+	<div id="mapwrapper" class="fullpage">
+		<div id="layerswitcher-container">
+			<div id="layerswitcher" class="olControlLayerSwitcher"></div>
+		</div>
+		<script type="text/javascript">
+     {% autoescape off %}
+      function loadMap() {
+          var config = {{map_config}};
+          config['baselayer_type']  = "{{ MAP_BASELAYER_TYPE }}";
+
+          var map = new OBMap(config);
+	  map.map.addControl(
+              new OpenLayers.Control.LayerSwitcher(
+                  {'div': OpenLayers.Util.getElement('layerswitcher')}
+          ));
+          var permalink = new OpenblockPermalink(map);
+          map.map.addControl(permalink);
+
+          var dateControl = new OBMapDateRange(map, permalink, '#map_date_range_form');
+
+          var headlines = new OBMapItemList(map, {'element': '#map_headlines'});
+          $('#mapwrapper').css('margin-left', $('#map_headlines').css('width'));
+
+          // Overriding openlayers' normal layer switcher hide/expand.
+          var switcherLabel = $j('#mapwrapper .layersDiv .dataLbl');
+          var layersDiv = $j('#mapwrapper .layersDiv .dataLayersDiv');
+
+          switcherLabel.html('&nabla; Overlays');
+          switcherLabel.toggle(
+              function() {
+                  layersDiv.show(100);
+                  switcherLabel.html('&Delta; Overlays');
+              },
+              function() {
+                  layersDiv.hide(100);
+                  switcherLabel.html('&nabla; Overlays');
+			});
+
+          return map;
+      }
+      {% endautoescape %}
+		</script>
+
+{% include "richmaps/richmap.html" %}
+</div><!-- end mapwrapper -->
+
+	<ul class="view_controls" id="top">
+		<li class="list"><a href="/">List View</a></li>
+		<li class="active map"><a>Map View</a></li>
+    </ul>
+
+	<div id="map_toolbar">
+		<a href="/" id="home_btn" title="home">
+			<img src="/resources/images/neighborhoods_logo.png">
+		</a>
+	
+		<div id="map_date_range">
+				<form action="#" id="map_center">
+						<label for="map_begin_date">Find Address</label>
+						<input type="text" name="c" value="Search for an address" onclick="this.select();" onFocus="this.select();" onBlur="if (this.value == '') { this.value = 'Search for an address'; }" />
+						<button type="submit" value="Find" >GO</button>
+				</form>
+				<form action="#" id="map_date_range_form">
+						<label for="map_begin_date">Start Date</label>
+						<input type="text" class="begin-date" id="map_begin_date" />
+						<label for="map_end_date">End Date</label>
+						<input type="text" class="end-date" id="map_end_date" />
+						<input type="submit" value="change" />
+				  </form>
+		</div>
+		
+		<a href="" id="permalink_btn" class="plain_btn">Share</a>
+		<a id="post" href="#" ><span>Post +</span></a>
+		
+	</div>
+	
+	<div id="post" class="menu_dropdown bigmap">  
+	 <h3>Post</h3>
+		<a class="close" alt="Home" href="#">cancel</a>
+			<ul class="drop_menu">
+							<li><a class="neighbor-messages typelink" href="/neighbornews/message/new">Neighbor Messages</a></li>
+							<li><a class="neighbor-events typelink" href="/neighbornews/event/new">Neighbor Events</a></li>
+		   </ul>
+     </div>
+	
+	<div id="permalink_popup">
+		<h3>Share this map</h3>
+		<a href="#" class="close">cancel</a>
+		<div class="content">
+			<small>Copy the link below to share this map</small>
+			<div id="theLink">Loading</div>
+			<div class="clear"></div>
+			<div style="margin-top:10px;">	
+				<small>Or post this map to Twitter or Facebook</small>
+				<div class="clear"></div>
+				<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=" id="facebook_button">
+					Share on Facebook
+				</a>
+			
+				<a href="http://twitter.com/share?text=Explore your neighborhood on Open Block&url=" class="twitter popup" id="twitter_button">Tweet</a>			
+			</div>	
+		</div>
+	</div>
+	
+{% endblock %}

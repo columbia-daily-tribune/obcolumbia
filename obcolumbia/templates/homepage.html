@@ -1,0 +1,145 @@
+{% extends "ebpub/templates/base_place.html" %}
+{% load eb humanize mapping %}
+<!-- customize your homepage here -->
+
+{% block extrahead %}
+<style type="text/css">
+  .homepage #nav-location {
+      width: 394px;
+
+  }
+  .homepage #place-detail-content h2, .homepage #place-detail-events h2 {
+      font-size: 16px;
+      border-bottom: 1px solid #CCC;
+  }
+  .homepage #detailmap {
+    width: 392px;
+  }
+</style>
+<script type="text/javascript">
+    window.onload = function() {
+	{% include "db/snippets/onload_scripts.html" %}
+    };
+</script>
+{% endblock extrahead %}
+
+{% block content %}
+		
+{{ block.super }}
+
+
+
+{% endblock content %}
+
+{% block subscribe_links %}
+<!-- not used on homepage -->
+{% endblock subscribe_links %}
+
+{% block place_content %}
+<div id="content">
+  <div id="place-detail-content">
+	<h1>Recent News</h1>
+	{% include "db/snippets/newsitem_list_by_day.html" with newsitem_list=recent_news show_upcoming=0 has_next=recent_has_next has_previous=recent_has_previous page_number=recent_page_number previous_page_number=recent_previous_page_number next_page_number=recent_next_page_number page_start_index=recent_page_start_index page_end_index=recent_page_end_index %}
+  </div><!--/ #place-detail-content -->
+
+  <div id="place-detail-events">
+	<h1>Upcoming Events</h1>
+	{% include "db/snippets/newsitem_list_by_day.html" with newsitem_list=upcoming_events show_upcoming=1 has_next=event_has_next has_previous=event_has_previous page_number=event_page_number previous_page_number=event_previous_page_number next_page_number=event_next_page_number page_start_index=event_page_start_index page_end_index=event_page_end_index %}
+  </div><!--/ #place-detail-events -->
+
+  <!-- begin block extracontent -->
+  {% block extracontent %}
+  {% endblock extracontent %}
+  <!-- end block extracontent -->
+
+</div><!--/ #content -->
+{% endblock place_content %}
+
+{% block nearby_locations %}
+<div class="clear"></div>
+<div class="sidebar">
+	<span id="gradient"></span>
+	
+  <div id="intro-explore">
+	<h3>Locations</h3>
+	<ul class="location-type-list">
+		{% for location_type in location_type_list %}
+			<li><a href="{{ location_type.url }}"><strong class="number">{{ location_type.count|intcomma }}</strong> {{ location_type.plural_name|capfirst }}</a></li>
+		{% endfor %}
+		<li><a href="{% url ebpub-street-list %}"><strong class="number">{{ street_count|intcomma }}</strong> Streets</a></li>
+	</ul>
+  </div><!--/ #intro-explore-->
+
+	<div id="frontpage-text">
+
+	<div id="public-records">
+		{% if non_empty_date_charts %}
+		<h3>Overview</h3>
+		<p>New in the last {{ num_days }} days</p>
+		<ul>
+			{% for chart in non_empty_date_charts %}
+			<li {% if chart.schema.id not in allowed_schema_ids %}class="restricted-schema"{% endif %}>
+				{% map_icon_img chart.schema %}
+				<strong>{{ chart.total_count|intcomma }}</strong> <a href="{{ chart.schema.url }}">{% filter capfirst %}{% schema_plural_name chart.schema chart.total_count %}{% endfilter %}</a>
+			</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+		{% if empty_date_charts %}
+		<ul>Older: {% for chart in empty_date_charts %}
+            <li {% if chart.schema.id not in allowed_schema_ids %}class="restricted-schema"{% endif %}><a href="{{ chart.schema.url }}">{% map_icon_img chart.schema %}{{ chart.schema.plural_name|capfirst }}</a>
+            </li>{% endfor %}
+        </ul>
+		{% endif %}
+	</div><!--/ #public-records -->
+	<div id="more">
+	{% if more_schemas %}
+		<h3>More news</h3>
+		<ul>
+		{% for schema in more_schemas %}
+			<li><a href="{{ schema.url }}">{% map_icon_img schema %}{{ schema.plural_name|capfirst }}</a></li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
+	<!-- begin block restrictedschemas -->
+	{% block restrictedschemas %}
+
+	{% if restricted_schemas %}
+		<h3>Premium News</h3>
+		<p>You must have a current subscription to view these:</p>
+		<ul>
+		  {% for schema in restricted_schemas %}
+		  <li class="restricted-schema">
+		    {% map_icon_img schema %}{{ schema.plural_name|capfirst }}
+		  </li>
+		  {% endfor %}
+		</ul>
+	{% endif %}
+
+	{% endblock restrictedschemas %}
+	<!-- end block restrictedschemas -->
+
+	</div><!--/ #more -->
+
+	<!--  begin block featuredlookups -->
+	{% block featuredlookups %}
+	{% get_featured_lookups_by_schema %}
+	{% if featured_lookups %}
+	<!-- This only shows up if you have some Lookups with featured=True -->
+	<div id="featured-tags">
+		<h3>Featured Tags</h3>
+		<ul>
+		{% for schema, tags in featured_lookups.items %}
+		  {% for tag in tags %}
+			<li><a href="{{ tag.url }}">{{ tag.lookup }}</a></li>
+		  {% endfor %}
+		{% endfor %}
+		</ul>
+	</div><!--/ #tag_info -->
+	{% endif %}
+	{% endblock featuredlookups %}<!--  end block featuredlookups -->
+
+    </div><!-- / #frontpage-text -->
+</div>
+{% endblock nearby_locations %}

@@ -1,0 +1,61 @@
+OpenBlock space requirements
+=============================
+
+As of Nov 8 2011:
+
+With the current set of scrapers (business, fire, midmo_coupons,
+midmo_reviews, mupolice, police, sheriff, trulia), we are loading
+about 120 new news items per day into the columbia demo.
+
+Some database growth experiments:
+
+  Number of NewsItems      Size of database (MB
+  ---------------------    --------------------
+  0                        40 MB
+  3697                     44 MB
+  56017                    99 MB
+
+This works out to an average of about 1.1 kB per NewsItem.
+
+Based on this, we can roughly predict database growth
+assuming a consistent average of 120 NewsItems / day:
+
+Growth per day: 132 kB
+Growth per week: 924 kB
+Growth per month: 3.86 MB
+Growth per year: 47 MB
+
+
+Measurements were performed simply by measuring the disk usage of the
+relant postgresql directory, in this case
+"du -m /var/lib/postgresql/8.4/main/base/5591300".
+
+
+User Comments
+--------------
+
+We cannot predict how many comments you'll get.  In some automated
+testing here, growth was roughly 3400 kB per 1000 comments, or 3.4 kB
+per comment.  This number may be slightly high as our test script
+generates somewhat lengthy comments.
+
+
+Images
+-------
+
+User-uploaded images have not been implemented yet, and we can't
+predict how many of your users will upload images.
+Assume that there will be relatively few image uploads but they will
+each be much larger than other NewsItem data.
+
+As one small data point, http://fixcity.org allows image uploads and
+has so far received 261 images totalling 70 MB.
+
+Locations
+---------
+
+We have not measured the size of growth due to adding locations
+because we assume these will not change often and there will a
+relatively small number of them. The locations from the
+columbia.openblock.org demo are included in the initial 40 MB database
+size mentioned above.

@@ -1,0 +1,1623 @@
+[
+  {
+    "fields": {
+      "slug": "fire", 
+      "allow_charting": true, 
+      "allow_comments": false, 
+      "allow_flagging": false,
+      "can_collapse": false,
+      "date_name": "Date", 
+      "date_name_plural": "Dates", 
+      "has_newsitem_detail": true, 
+      "importance": 0, 
+      "indefinite_article": "a", 
+      "is_event": false,
+      "is_public": true, 
+      "is_special_report": false, 
+      "last_updated": "2011-04-25", 
+      "map_color": "#FF3300", 
+      "map_icon_url": "/map_icons/fire.png",
+      "min_date": "1900-01-01", 
+      "name": "Fire Department Activity", 
+      "number_in_overview": 5, 
+      "plural_name": "Fire Department Activities", 
+      "short_description": "", 
+      "short_source": "", 
+      "source": "", 
+      "summary": "Fire department reports", 
+      "update_frequency": "", 
+      "uses_attributes_in_list": false
+    }, 
+    "model": "db.schema"
+  }, 
+  {
+    "fields": {
+      "slug": "police", 
+      "allow_charting": true, 
+      "allow_comments": false, 
+      "allow_flagging": false,
+      "can_collapse": false,
+      "date_name": "Date", 
+      "date_name_plural": "Dates", 
+      "has_newsitem_detail": true, 
+      "importance": 0, 
+      "indefinite_article": "a", 
+      "is_event": false,
+      "is_public": true, 
+      "is_special_report": false, 
+      "last_updated": "2011-04-25", 
+      "map_color": "",
+      "map_icon_url": "/map_icons/police.png", 
+      "min_date": "1900-01-01", 
+      "name": "Police Activity", 
+      "number_in_overview": 5, 
+      "plural_name": "Police Activities", 
+      "short_description": "", 
+      "short_source": "", 
+      "source": "", 
+      "summary": "Police activity reports.", 
+      "update_frequency": "", 
+      "uses_attributes_in_list": false
+    }, 
+    "model": "db.schema"
+  }, 
+  {
+    "fields": {
+      "slug": "sheriff", 
+      "allow_charting": true, 
+      "allow_comments": false, 
+      "allow_flagging": false,
+      "can_collapse": false,
+      "date_name": "Date", 
+      "date_name_plural": "Dates", 
+      "has_newsitem_detail": true, 
+      "importance": 0, 
+      "indefinite_article": "a", 
+      "is_event": false,
+      "is_public": true, 
+      "is_special_report": false, 
+      "last_updated": "2011-08-10", 
+      "map_color": "", 
+      "map_icon_url": "/map_icons/sheriff.png",
+      "min_date": "2011-08-10", 
+      "name": "Sheriff Activity", 
+      "number_in_overview": 5, 
+      "plural_name": "Sheriff Activities", 
+      "short_description": "", 
+      "short_source": "http://report.boonecountymo.org/mrcjava/mrcclasses/SH01_MP/cadlogs.xml", 
+      "source": "http://report.boonecountymo.org/mrcjava/mrcclasses/SH01_MP/cadlogs.xml", 
+      "summary": "Boone County Sheriff activity reports.", 
+      "update_frequency": "", 
+      "uses_attributes_in_list": false
+    }, 
+    "model": "db.schema"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Addresses", 
+      "is_charted": false, 
+      "name": "address", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar01", 
+      "pretty_name": "Address", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "sheriff"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Addresses", 
+      "is_charted": false, 
+      "name": "address", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar01", 
+      "pretty_name": "Address", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "fire"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Addresses", 
+      "is_charted": false, 
+      "name": "address", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar01", 
+      "pretty_name": "Address", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "police"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Agencies", 
+      "is_charted": false, 
+      "name": "agencies", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar02", 
+      "pretty_name": "Agencies", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "fire"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Apt Lots", 
+      "is_charted": false, 
+      "name": "aptlot", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar02", 
+      "pretty_name": "Apt Lot", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "police"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Call Times", 
+      "is_charted": false, 
+      "name": "calldatetime", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "datetime01", 
+      "pretty_name": "Call Time", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "fire"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Call Times", 
+      "is_charted": false, 
+      "name": "calldatetime", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "datetime01", 
+      "pretty_name": "Call Time", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "police"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Department IDs", 
+      "is_charted": false, 
+      "name": "fdids", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar03", 
+      "pretty_name": "Department IDs", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "fire"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Disps", 
+      "is_charted": false, 
+      "name": "disp", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar03", 
+      "pretty_name": "Disp", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "police"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "In Nums", 
+      "is_charted": false, 
+      "name": "innum", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "int01", 
+      "pretty_name": "In Num", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "fire"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "In Nums", 
+      "is_charted": false, 
+      "name": "innum", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "int01", 
+      "pretty_name": "In Num", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "police"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "In Nums", 
+      "is_charted": false, 
+      "name": "innum", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "int01", 
+      "pretty_name": "In Num", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "sheriff"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": true, 
+      "pretty_name_plural": "Incident Types", 
+      "is_charted": true, 
+      "name": "incident_type", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar04", 
+      "pretty_name": "Incident Type", 
+      "is_filter": true, 
+      "display": true, 
+      "schema": [
+        "police"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": true, 
+      "pretty_name_plural": "Incident Types", 
+      "is_charted": true, 
+      "name": "incident_type", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar02", 
+      "pretty_name": "Incident Type", 
+      "is_filter": true, 
+      "display": true, 
+      "schema": [
+        "sheriff"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": true, 
+      "pretty_name_plural": "Incident Types", 
+      "is_charted": true, 
+      "name": "incident_type", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar05", 
+      "pretty_name": "Incident Type", 
+      "is_filter": true, 
+      "display": true, 
+      "schema": [
+        "fire"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "is_lookup": false, 
+      "pretty_name_plural": "Trucks", 
+      "is_charted": false, 
+      "name": "trucks", 
+      "display_order": 10, 
+      "is_searchable": false, 
+      "real_name": "varchar04", 
+      "pretty_name": "Trucks", 
+      "is_filter": false, 
+      "display": true, 
+      "schema": [
+        "fire"
+      ]
+    }, 
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "slug": "midmo-coupons",
+      "allow_charting": true,
+      "allow_comments": false,
+      "allow_flagging": false,
+      "can_collapse": false,
+      "date_name": "Date",
+      "date_name_plural": "Dates",
+      "has_newsitem_detail": true,
+      "importance": 0,
+      "indefinite_article": "a",
+      "is_event": false,
+      "is_public": true,
+      "is_special_report": false,
+      "last_updated": "2011-09-26",
+      "map_color": "",
+      "map_icon_url": "/map_icons/noun_project_355.png",
+      "min_date": "2000-01-01",
+      "name": "Coupon",
+      "number_in_overview": 5,
+      "plural_name": "Coupons",
+      "short_description": "",
+      "short_source": "http://www.everythingmidmo.com/marketplace/ads/",
+      "source": "http://www.everythingmidmo.com/marketplace/ads/",
+      "summary": "Everything MidMo coupons",
+      "update_frequency": "",
+      "uses_attributes_in_list": true
+    },
+    "model": "db.schema"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 1,
+      "is_charted": false,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "business_name",
+      "pretty_name": "Business Name",
+      "pretty_name_plural": "Business Names",
+      "real_name": "int01",
+      "schema": [
+        "midmo-coupons"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 1,
+      "is_charted": true,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "starts",
+      "pretty_name": "Starts",
+      "pretty_name_plural": "Starts",
+      "real_name": "date01",
+      "schema": [
+        "midmo-coupons"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 3,
+      "is_charted": true,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "expires",
+      "pretty_name": "Expires",
+      "pretty_name_plural": "Expires",
+      "real_name": "date02",
+      "schema": [
+        "midmo-coupons"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "slug": "real-estate-listings",
+      "allow_charting": true,
+      "allow_comments": false,
+      "allow_flagging": false,
+      "can_collapse": false,
+      "date_name": "Date",
+      "date_name_plural": "Dates",
+      "has_newsitem_detail": true,
+      "importance": 0,
+      "indefinite_article": "a",
+      "is_event": false,
+      "is_public": true,
+      "is_special_report": false,
+      "last_updated": "2011-09-30",
+      "map_color": "",
+      "map_icon_url": "/map_icons/home.png",
+      "min_date": "2010-01-01",
+      "name": "Real Estate Listing",
+      "number_in_overview": 5,
+      "plural_name": "Real Estate Listings",
+      "short_description": "Real estate listings from Trulia",
+      "short_source": "http://www.trulia.com/",
+      "source": "http://www.trulia.com/MO/Columbia/",
+      "summary": "Real estate listings from Trulia.com",
+      "update_frequency": "",
+      "uses_attributes_in_list": true
+    },
+    "model": "db.schema"
+  },
+  {
+    "fields": {
+      "display": false,
+      "display_order": 10, 
+      "is_charted": true, 
+      "is_filter": false, 
+      "is_lookup": true, 
+      "is_searchable": false, 
+      "name": "listing_type", 
+      "pretty_name": "Listing Type", 
+      "pretty_name_plural": "Listing Types", 
+      "real_name": "int01", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "display": false, 
+      "display_order": 20, 
+      "is_charted": false, 
+      "is_filter": false, 
+      "is_lookup": false, 
+      "is_searchable": false, 
+      "name": "year_built", 
+      "pretty_name": "Year Built", 
+      "pretty_name_plural": "Years Built", 
+      "real_name": "int02", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+
+  {
+    "fields": {
+      "display": false, 
+      "display_order": 0, 
+      "is_charted": false, 
+      "is_filter": false, 
+      "is_lookup": false, 
+      "is_searchable": false, 
+      "name": "property_id", 
+      "pretty_name": "Property ID", 
+      "pretty_name_plural": "Property IDs", 
+      "real_name": "varchar01", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+
+  {
+    "fields": {
+      "display": true, 
+      "display_order": 10, 
+      "is_charted": true, 
+      "is_filter": true, 
+      "is_lookup": true, 
+      "is_searchable": false, 
+      "name": "property_type", 
+      "pretty_name": "Property Type",
+      "pretty_name_plural": "Property Types",
+      "real_name": "int07", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "display": true, 
+      "display_order": 10, 
+      "is_charted": false, 
+      "is_filter": false, 
+      "is_lookup": false, 
+      "is_searchable": false, 
+      "name": "price", 
+      "pretty_name": "Price", 
+      "pretty_name_plural": "Prices", 
+      "real_name": "varchar02", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "display": true, 
+      "display_order": 40, 
+      "is_charted": false, 
+      "is_filter": true, 
+      "is_lookup": true, 
+      "is_searchable": false, 
+      "name": "bedrooms", 
+      "pretty_name": "Bedrooms", 
+      "pretty_name_plural": "Bedrooms", 
+      "real_name": "int03", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "display": true, 
+      "display_order": 45, 
+      "is_charted": false, 
+      "is_filter": true, 
+      "is_lookup": true, 
+      "is_searchable": false, 
+      "name": "bathrooms", 
+      "pretty_name": "Bathrooms", 
+      "pretty_name_plural": "Bathrooms", 
+      "real_name": "int04", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "display": true, 
+      "display_order": 50, 
+      "is_charted": false, 
+      "is_filter": false, 
+      "is_lookup": false, 
+      "is_searchable": false, 
+      "name": "sqft", 
+      "pretty_name": "Square Feet", 
+      "pretty_name_plural": "Square Feet", 
+      "real_name": "int05", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  }, 
+  {
+    "fields": {
+      "display": false, 
+      "display_order": 60, 
+      "is_charted": false, 
+      "is_filter": false, 
+      "is_lookup": true, 
+      "is_searchable": false, 
+      "name": "broker", 
+      "pretty_name": "Broker Name", 
+      "pretty_name_plural": "Broker Names", 
+      "real_name": "int06", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": false, 
+      "display_order": 0, 
+      "is_charted": false, 
+      "is_filter": false, 
+      "is_lookup": false, 
+      "is_searchable": false, 
+      "name": "thumbnail", 
+      "pretty_name": "Thumbnail", 
+      "pretty_name_plural": "Thumbnails", 
+      "real_name": "varchar03", 
+      "schema": [
+          "real-estate-listings"
+      ]
+    }, 
+    "model": "db.schemafield"
+  },
+
+
+
+  {
+    "fields": {
+      "slug": "meetups",
+      "allow_charting": true,
+      "can_collapse": false,
+      "date_name": "Date",
+      "date_name_plural": "Dates",
+      "has_newsitem_detail": true,
+      "importance": 0,
+      "indefinite_article": "a",
+      "is_event": true,
+      "is_public": true,
+      "is_special_report": false,
+      "last_updated": "2011-09-09",
+      "map_icon_url": "/map_icons/meetup.png",
+      "min_date": "2011-01-01",
+      "name": "Meetup",
+      "number_in_overview": 5,
+      "plural_name": "Meetups",
+      "short_description": "Meetups",
+      "short_source": "http://meetup.com",
+      "source": "http://meetup.com",
+      "summary": "Local Meetup meetings",
+      "update_frequency": "",
+      "uses_attributes_in_list": true
+    },
+    "model": "db.schema"
+  },
+  {
+    "fields": {
+      "is_lookup": false,
+      "is_charted": false,
+      "is_filter": false,
+      "is_searchable": true,
+      "name": "group_name",
+      "display_order": 1,
+      "real_name": "varchar01",
+      "pretty_name": "Group Name",
+      "pretty_name_plural": "Group Names",
+      "display": true,
+      "schema": [
+        "meetups"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "is_lookup": false,
+      "is_charted": false,
+      "is_filter": false,
+      "is_searchable": true,
+      "name": "venue_name",
+      "display_order": 5,
+      "real_name": "varchar02",
+      "pretty_name": "Venue Name",
+      "pretty_name_plural": "Venue Names",
+      "display": true,
+      "schema": [
+        "meetups"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "is_lookup": false,
+      "is_charted": false,
+      "is_filter": false,
+      "is_searchable": false,
+      "name": "venue_phone",
+      "display_order": 10,
+      "real_name": "varchar03",
+      "pretty_name": "Venue Phone",
+      "pretty_name_plural": "Venue Phones",
+      "display": true,
+      "schema": [
+        "meetups"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "is_lookup": false,
+      "is_filter": false,
+      "is_charted": false,
+      "is_searchable": false,
+      "pretty_name_plural": "Start Times",
+      "name": "start_time",
+      "display_order": 0,
+      "real_name": "time01",
+      "pretty_name": "Start Time",
+      "display": true,
+      "schema": [
+        "meetups"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "slug": "photos",
+      "allow_charting": true,
+      "can_collapse": false,
+      "date_name": "Date",
+      "date_name_plural": "Dates",
+      "has_newsitem_detail": true,
+      "importance": 0,
+      "indefinite_article": "a",
+      "is_event": false,
+      "is_public": true,
+      "is_special_report": false,
+      "last_updated": "2011-08-25",
+      "map_icon_url": "/map_icons/photo.png",
+      "min_date": "2011-01-01",
+      "name": "Photo from Flickr",
+      "number_in_overview": 5,
+      "plural_name": "Photos from Flickr",
+      "short_description": "Photos from Flickr",
+      "short_source": "http://flickr.com",
+      "source": "http://flickr.com",
+      "summary": "Local photos from Flickr",
+      "update_frequency": "",
+      "uses_attributes_in_list": true
+    },
+    "model": "db.schema"
+  },
+  {
+    "fields": {
+      "is_lookup": false,
+      "is_charted": false,
+      "is_filter": false,
+      "is_searchable": true,
+      "name": "username",
+      "display_order": 1,
+      "real_name": "varchar01",
+      "pretty_name": "User Name",
+      "pretty_name_plural": "User Names",
+      "display": true,
+      "schema": [
+        "photos"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "is_lookup": false,
+      "is_charted": false,
+      "is_filter": false,
+      "is_searchable": false,
+      "name": "user_id",
+      "display_order": 2,
+      "real_name": "varchar02",
+      "pretty_name": "User ID",
+      "pretty_name_plural": "User IDs",
+      "display": false,
+      "schema": [
+        "photos"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "is_lookup": false,
+      "is_charted": false,
+      "is_filter": false,
+      "is_searchable": false,
+      "name": "sourcename",
+      "display_order": 3,
+      "real_name": "varchar03",
+      "pretty_name": "Source Site Name",
+      "pretty_name_plural": "Source Site Names",
+      "display": true,
+      "schema": [
+        "photos"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "is_lookup": false,
+      "is_charted": false,
+      "is_filter": false,
+      "is_searchable": false,
+      "name": "photo_href",
+      "display_order": 4,
+      "real_name": "varchar04",
+      "pretty_name": "Thumbnail URL",
+      "pretty_name_plural": "Thumbnail URLs",
+      "display": false,
+      "schema": [
+        "photos"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "slug": "neighbor-events",
+      "allow_charting": true,
+      "allow_comments": true,
+      "allow_flagging": true,
+      "can_collapse": false,
+      "date_name": "Date",
+      "date_name_plural": "Dates",
+      "edit_window": 0.0,
+      "has_newsitem_detail": true,
+      "importance": 0,
+      "indefinite_article": "a",
+      "is_event": true,
+      "is_public": true,
+      "is_special_report": false,
+      "last_updated": "2011-08-03",
+      "map_color": "",
+      "map_icon_url": "/map_icons/calendar-3.png",
+      "min_date": "2011-08-03",
+      "name": "Neighbor Event",
+      "number_in_overview": 5,
+      "plural_name": "Neighbor Events",
+      "short_description": "User contributed events",
+      "short_source": "",
+      "source": "",
+      "summary": "Events calendar from your neighbors",
+      "update_frequency": "",
+      "uses_attributes_in_list": false
+    },
+    "model": "db.schema"
+  },
+  {
+    "fields": {
+      "slug": "neighbor-messages",
+      "allow_charting": true,
+      "allow_comments": true,
+      "allow_flagging": true,
+      "can_collapse": false,
+      "date_name": "Date",
+      "date_name_plural": "Dates",
+      "edit_window": 0.0,
+      "has_newsitem_detail": true,
+      "importance": 0,
+      "indefinite_article": "a",
+      "is_event": false,
+      "is_public": true,
+      "is_special_report": false,
+      "last_updated": "2011-08-03",
+      "map_color": "",
+      "map_icon_url": "",
+      "min_date": "2011-08-03",
+      "name": "Neighbor Message",
+      "number_in_overview": 5,
+      "plural_name": "Neighbor Messages",
+      "short_description": "User contributed messages and news",
+      "short_source": "",
+      "source": "",
+      "summary": "News and messages from your neighbors.",
+      "update_frequency": "",
+      "uses_attributes_in_list": false
+    },
+    "model": "db.schema"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 10,
+      "is_charted": true,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "categories",
+      "pretty_name": "Categories",
+      "pretty_name_plural": "Categories",
+      "real_name": "varchar01",
+      "schema": [
+        "neighbor-messages"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 10,
+      "is_charted": true,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "categories",
+      "pretty_name": "Categories",
+      "pretty_name_plural": "Categories",
+      "real_name": "varchar01",
+      "schema": [
+        "neighbor-events"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 25,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "end_time",
+      "pretty_name": "End Time",
+      "pretty_name_plural": "End Times",
+      "real_name": "time02",
+      "schema": [
+        "neighbor-events"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": false,
+      "display_order": 10,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "image_url",
+      "pretty_name": "Image URL",
+      "pretty_name_plural": "Image URLs",
+      "real_name": "text01",
+      "schema": [
+        "neighbor-events"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": false,
+      "display_order": 10,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "image_url",
+      "pretty_name": "Image URL",
+      "pretty_name_plural": "Image URLs",
+      "real_name": "text01",
+      "schema": [
+        "neighbor-messages"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 24,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "start_time",
+      "pretty_name": "Start Time",
+      "pretty_name_plural": "Start Times",
+      "real_name": "time01",
+      "schema": [
+        "neighbor-events"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+
+
+  {
+    "fields": {
+      "slug": "mupd",
+      "allow_charting": true,
+      "allow_comments": false,
+      "allow_flagging": false,
+      "can_collapse": false,
+      "date_name": "Date",
+      "date_name_plural": "Dates",
+      "has_newsitem_detail": true,
+      "importance": 0,
+      "indefinite_article": "a",
+      "is_public": true,
+      "is_special_report": false,
+      "last_updated": "2011-04-25",
+      "map_color": "",
+      "map_icon_url": "/map_icons/mupolice.png",
+      "min_date": "2000-01-01",
+      "name": "M.U. Police Activity",
+      "number_in_overview": 5,
+      "plural_name": "M.U. Police Activities",
+      "short_description": "",
+      "short_source": "",
+      "source": "",
+      "summary": "Missouri University police activity reports.",
+      "update_frequency": "",
+      "uses_attributes_in_list": false
+    }, 
+    "model": "db.schema"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 24,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "incident_number",
+      "pretty_name": "Incident Number",
+      "pretty_name_plural": "Incident Numbers",
+      "real_name": "varchar01",
+      "schema": [
+        "mupd"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 10,
+      "is_charted": false,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "category",
+      "pretty_name": "Category",
+      "pretty_name_plural": "Categories",
+      "real_name": "int01",
+      "schema": [
+        "mupd"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+
+
+
+  {
+    "fields": {
+      "slug": "midmo-reviews",
+      "allow_charting": true,
+      "allow_comments": false,
+      "allow_flagging": false,
+      "can_collapse": false,
+      "date_name": "Date",
+      "date_name_plural": "Dates",
+      "has_newsitem_detail": true,
+      "importance": 0,
+      "indefinite_article": "a",
+      "is_event": false,
+      "is_public": true,
+      "is_special_report": false,
+      "last_updated": "2011-11-07",
+      "map_color": "#1af1c1",
+      "map_icon_url": "/map_icons/noun_project_330.png",
+      "min_date": "2011-01-01",
+      "name": "MidMo Review",
+      "number_in_overview": 5,
+      "plural_name": "MidMo Reviews",
+      "short_description": "",
+      "short_source": "http://www.everythingmidmo.com/marketplace/reviews/",
+      "source": "http://www.everythingmidmo.com/marketplace/reviews/",
+      "summary": "User reviews from everythingmidmo.com.",
+      "update_frequency": "",
+      "uses_attributes_in_list": true
+    },
+    "model": "db.schema"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 2,
+      "is_charted": true,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "rating",
+      "pretty_name": "Rating",
+      "pretty_name_plural": "Ratings",
+      "real_name": "int01",
+      "schema": [
+        "midmo-reviews"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 5,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": true,
+      "name": "reviewer",
+      "pretty_name": "Reviewer Name",
+      "pretty_name_plural": "Reviewer Names",
+      "real_name": "varchar01",
+      "schema": [
+        "midmo-reviews"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 8,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": true,
+      "name": "business",
+      "pretty_name": "Business Name",
+      "pretty_name_plural": "Business Names",
+      "real_name": "varchar02",
+      "schema": [
+        "midmo-reviews"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 30,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "comments",
+      "pretty_name": "Comments",
+      "pretty_name_plural": "Comments",
+      "real_name": "int03",
+      "schema": [
+        "midmo-reviews"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+
+  {
+    "fields": {
+      "display": true,
+      "display_order": 10,
+      "is_charted": true,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "business_type",
+      "pretty_name": "Business Type",
+      "pretty_name_plural": "Business Types",
+      "real_name": "int04",
+      "schema": [
+        "midmo-reviews"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+
+  {
+    "fields": {
+      "slug": "restaurants",
+      "allow_charting": true,
+      "allow_comments": false,
+      "allow_flagging": false,
+      "can_collapse": false,
+      "date_name": "Date",
+      "date_name_plural": "Dates",
+      "has_newsitem_detail": true,
+      "importance": 0,
+      "indefinite_article": "a",
+      "is_event": false,
+      "is_public": true,
+      "is_special_report": false,
+      "last_updated": "2012-01-06",
+      "map_color": "",
+      "map_icon_url": "/map_icons/restaurant.png",
+      "min_date": "1900-01-01",
+      "name": "Restaurant Inspection",
+      "number_in_overview": 5, 
+      "plural_name": "Restaurant Inspections",
+      "short_description": "",
+      "short_source": "",
+      "source": "",
+      "summary": "Restaurant inspections",
+      "update_frequency": "",
+      "uses_attributes_in_list": false
+    },
+    "model": "db.schema"
+  },
+
+  {
+    "fields": {
+      "display": false,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "inspection_id",
+      "pretty_name": "Inspection ID",
+      "pretty_name_plural": "Inspection IDs",
+      "real_name": "int01",
+      "schema": [
+        "restaurants"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": false,
+      "display_order": 0,
+      "is_charted": true,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "establishment_type",
+      "pretty_name": "Establishment Type",
+      "pretty_name_plural": "Establishment Types",
+      "real_name": "int02",
+      "schema": [
+        "restaurants"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": false,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "inspector",
+      "pretty_name": "Inspector Name",
+      "pretty_name_plural": "Inspector Name",
+      "real_name": "int03",
+      "schema": [
+        "restaurants"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": false,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "inspection_type",
+      "pretty_name": "Inspection Type",
+      "pretty_name_plural": "Inspection Types",
+      "real_name": "int04",
+      "schema": [
+        "restaurants"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+  {
+    "fields": {
+      "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": true,
+      "name": "person_in_charge",
+      "pretty_name": "Person in Charge",
+      "pretty_name_plural": "People in Charge",
+      "real_name": "varchar01",
+      "schema": [
+        "restaurants"
+      ]
+    },
+    "model": "db.schemafield"
+  },
+
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": true,
+      "name": "comments",
+      "pretty_name": "Comment",
+      "pretty_name_plural": "Comments",
+      "real_name": "varchar02",
+      "schema": [
+        "restaurants"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+      "display": true,
+      "display_order": 0,
+      "is_charted": true,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": true,
+      "name": "violations",
+      "pretty_name": "Violation",
+      "pretty_name_plural": "Violations",
+      "real_name": "varchar03",
+      "schema": [
+        "restaurants"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+
+  {
+    "fields": {
+      "slug": "arrests",
+      "allow_charting": true, 
+      "allow_comments": false, 
+      "allow_flagging": false,
+      "can_collapse": false,
+      "date_name": "Arrest Date", 
+      "date_name_plural": "Arrest Dates", 
+      "has_newsitem_detail": true, 
+      "importance": 0, 
+      "indefinite_article": "a", 
+      "is_event": false,
+      "is_public": true, 
+      "is_special_report": false, 
+      "last_updated": "2012-09-25", 
+      "map_color": "#FF3300", 
+      "map_icon_url": "/map_icons/sherrif.png",
+      "min_date": "2000-01-01", 
+      "name": "Boone County Sheriff Report", 
+      "number_in_overview": 5, 
+      "plural_name": "Boone County Sheriff Reports", 
+      "short_description": "", 
+      "short_source": "", 
+      "source": "", 
+      "summary": "Arrest reports", 
+      "update_frequency": "", 
+      "uses_attributes_in_list": false
+    }, 
+    "model": "db.schema"
+  }, 
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "sex",
+      "pretty_name": "Sex",
+      "pretty_name_plural": "Sex",
+      "real_name": "int01",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "birthday",
+      "pretty_name": "Birthday",
+      "pretty_name_plural": "Birthdays",
+      "real_name": "date01",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "arresting_agency",
+      "pretty_name": "Arresting Agency",
+      "pretty_name_plural": "Arresting Agencies",
+      "real_name": "int02",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": true,
+      "name": "bail_amt",
+      "pretty_name": "Bail Amount",
+      "pretty_name_plural": "Bail Amounts",
+      "real_name": "varchar01",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "release_reason",
+      "pretty_name": "Release Reason",
+      "pretty_name_plural": "Release Reasons",
+      "real_name": "int03",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": true,
+      "name": "warrant",
+      "pretty_name": "Warrant",
+      "pretty_name_plural": "Warrants",
+      "real_name": "varchar02",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": true,
+      "name": "case_no",
+      "pretty_name": "Case Number",
+      "pretty_name_plural": "Case Numbers",
+      "real_name": "varchar03",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": true,
+      "name": "disposition_comment",
+      "pretty_name": "Disposition Comment",
+      "pretty_name_plural": "Disposition Comments",
+      "real_name": "varchar04",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+     "display": true,
+      "display_order": 0,
+      "is_charted": false,
+      "is_filter": true,
+      "is_lookup": true,
+      "is_searchable": false,
+      "name": "charge",
+      "pretty_name": "Charge",
+      "pretty_name_plural": "Charge",
+      "real_name": "varchar05",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+ },
+ {
+    "fields": {
+      "display": false,
+      "display_order": 10,
+      "is_charted": false,
+      "is_filter": false,
+      "is_lookup": false,
+      "is_searchable": false,
+      "name": "image_url",
+      "pretty_name": "Image URL",
+      "pretty_name_plural": "Image URLs",
+      "real_name": "text01",
+      "schema": [
+        "arrests"
+      ]
+    },
+    "model": "db.schemafield"
+  }
+
+
+]

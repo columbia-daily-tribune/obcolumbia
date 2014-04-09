@@ -1,0 +1,14 @@
+{% load humanize %}
+{% for newsitem in newsitem_list %}
+	<li id="newsitem-{{ newsitem.id }}" class="newsitem news-articles real-estate">
+		<span class="newsitem hidden" style="float: right;">
+		  <form><input type="checkbox" class="select-newsitem" id="newsitem-{{newsitem.id}}"></form>
+		</span>
+		<strong class="title"><a href="{{ newsitem.item_url }}" class="url">{{ newsitem.title }}</a></strong>
+		<p class="info real-estate-details">
+		  {{newsitem.attributes.sqft|intcomma}} sq ft, {{newsitem.attributes.bedrooms.name}} BR, {{newsitem.attributes.bathrooms.name}} baths,
+		  ${{ newsitem.attributes.price|intcomma }}
+		</p>
+                <img class="trulia-thumbnail" src="{{ newsitem.attributes.thumbnail }}" >
+	</li>
+{% endfor %}

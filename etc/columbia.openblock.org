@@ -1,0 +1,29 @@
+# -*- mode: conf; -*-
+# Example Apache config for Columbia Tribune OpenBlock site.
+<VirtualHost 173.236.65.90:80>
+
+ServerName columbia.openblock.org
+
+Alias /media/ /var/www/columbia.openblock.org/lib/python2.6/site-packages/django/contrib/admin/media/
+Alias /styles/ /var/www/columbia.openblock.org/current/src/openblock/ebpub/ebpub/media/styles/
+Alias /scripts/ /var/www/columbia.openblock.org/current/src/openblock/ebpub/ebpub/media/scripts/
+Alias /images/ /var/www/columbia.openblock.org/current/src/openblock/ebpub/ebpub/media/images/
+Alias /map_icons/ /var/www/columbia.openblock.org/current/src/obcolumbia/map_icons/
+
+Alias /cache-forever/ /var/www/columbia.openblock.org/current/src/openblock/ebpub/ebpub/media/cache-forever/
+
+<Directory /var/www/columbia.openblock.org/current/src/openblock/ebpub/ebpub/media/ >
+  ExpiresActive on
+  ExpiresDefault "now plus 10 years"
+</Directory>
+
+#Alias /uploads/ /var/www/globe.openblockproject.org/var/uploads/
+
+WSGIScriptAlias / /var/www/columbia.openblock.org/current/src/obcolumbia/etc/obcolumbia.wsgi
+
+WSGIDaemonProcess obcolumbia_org user=openplans group=www-data
+WSGIProcessGroup obcolumbia_org
+
+CustomLog /var/log/apache2/columbia.openblock.org-access.log combined
+ErrorLog /var/log/apache2/columbia.openblock.org-error.log
+</VirtualHost>

@@ -1,0 +1,7 @@
+{% extends "ebpub/templates/accounts/login_form.html" %}
+{% block form_override %}
+	<form action="{% url password-login %}" method="POST">
+{% endblock form_override %}
+{% block next_override %}
+	<input type="hidden" name="next" value="{{ next|default:'/' }}" />
+{% endblock next_override %}

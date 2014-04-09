@@ -1,0 +1,45 @@
+[
+  {
+    "fields": {
+      "code": "pothole", 
+      "description": "", 
+      "featured": true,
+      "name": "Pot Hole", 
+      "slug": "pothole",
+      "schema_field": [
+        "neighbor-messages", 
+        "varchar01"
+      ]
+    }, 
+    "model": "db.lookup"
+  },
+  {
+    "fields": {
+      "code": "question", 
+      "description": "", 
+      "featured": true,
+      "name": "Question", 
+      "slug": "question",
+      "schema_field": [
+        "neighbor-messages", 
+        "varchar01"
+      ]
+    }, 
+    "model": "db.lookup"
+  },
+  {
+    "fields": {
+      "code": "spotnews", 
+      "description": "", 
+      "featured": true,
+      "name": "Spot News", 
+      "slug": "spotnews",
+      "schema_field": [
+        "neighbor-messages", 
+        "varchar01"
+      ]
+    }, 
+    "model": "db.lookup"
+  }
+
+]
